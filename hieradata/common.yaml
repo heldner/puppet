@@ -1,0 +1,55 @@
+---
+classes:
+  - apt
+  - apt::release
+  - apt::backports
+  - syslog_ng
+  - locales
+  - openntpd
+  - syslog_ng
+  - locales
+  - utils
+  - iceweasel
+  - mpd
+  - xorg
+  - xorg::wmii
+  - ecryptfs
+  - apulse
+# - firewall
+
+apt::apt_update_frequency: 'daily'
+apt::release::release_id:  '%{::lsbdistcodename}'
+apt::purge_sources_list:   true
+apt::purge_sources_list_d: true
+apt::backports::location:  'http://mirror.yandex.ru/debian'
+
+apt::sources:
+  wheezy:
+    location: 'http://mirror.yandex.ru/debian'
+    release:  '%{::lsbdistcodename}'
+    repos:    'main contrib non-free'
+  wheezy-security:
+    location: 'http://mirror.yandex.ru/debian-security'
+    release:  '%{::lsbdistcodename}/updates'
+    repos:    'main contrib non-free'
+  wheezy-updates:
+    location: 'http://mirror.yandex.ru/debian'
+    release:  '%{::lsbdistcodename}-updates'
+    repos:    'main contrib non-free'
+  wheezy-multimedia:
+    location: 'http://mirror.yandex.ru/debian-multimedia'
+    release:  '%{::lsbdistcodename}'
+    repos:    'main non-free'
+  docker:
+    location: 'http://get.docker.io/ubuntu'
+    release:  'docker'
+    repos:    'main'
+    include_src: false
+  puppetlabs:
+    location: 'http://apt.puppetlabs.com'
+    release:  '%{::lsbdistcodename}'
+    repos:    'main dependencies'
+    key:        '1054B7A24BD6EC30'
+    key_server: 'pgp.mit.edu'
+
+openntpd::force_startup_sync: false

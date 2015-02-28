@@ -1,0 +1,28 @@
+#!/bin/sh
+
+critical=<%= @critical %>
+lowlevel=<%= @lowlevel %>
+
+[ "`acpi -a | awk '{print $3}'`" = "on-line" ] && exit 0
+
+charge=$(acpi | awk -F',' '{printf"%d\n",$2}')
+
+notify() {
+  export DISPLAY=:0.0
+
+  title="$1"
+  body="$2"
+  shift 2
+  users=`who | awk '!x[$1]++ {print $1}'`
+
+  for u in ${users}; do
+    sudo -u ${u} notify-send "$title" "$body"
+  done
+}
+
+if [ "$charge" -le "$critical" ]; then
+  notify "Battery" "Will now halt, battary charge critical: $charge"
+  halt -p
+elif [ "$charge" -le "$lowlevel" ]; then
+  notify "Battery" "charge to low: $charge"
+fi

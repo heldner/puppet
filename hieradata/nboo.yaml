@@ -1,0 +1,7 @@
+---
+classes:
+  - nboo
+
+mpd::music_dir: '/home/Music'
+mpd::use_pulse: false
+xorg::xorg_conf: "puppet:///modules/nboo/xorg.conf"
