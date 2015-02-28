@@ -1,0 +1,7 @@
+.tmp/
+Puppetfile.lock
+modules/apt
+modules/stdlib
+modules/openntpd
+modules/puppi
+modules/concat
