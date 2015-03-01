@@ -16,7 +16,7 @@ notify() {
   users=`who | awk '!x[$1]++ {print $1}'`
 
   for u in ${users}; do
-    sudo -u ${u} notify-send "$title" "$body"
+    sudo -u ${u} notify-send "$title" "$body" 2>/dev/null
   done
 }
 
