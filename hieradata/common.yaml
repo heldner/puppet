@@ -15,6 +15,7 @@ classes:
   - xorg::wmii
   - ecryptfs
   - apulse
+  - udev
 # - firewall
 
 apt::apt_update_frequency: 'daily'
@@ -53,3 +54,7 @@ apt::sources:
     key_server: 'pgp.mit.edu'
 
 openntpd::force_startup_sync: false
+
+udev::rules:
+  automount:
+    content: 'puppet:///modules/udev/automount_by_label.rules'
