@@ -21,7 +21,7 @@ notify() {
 }
 
 if [ "$charge" -le "$critical" ]; then
-  notify "Battery" "Will now halt, battary charge critical: $charge"
+  echo "Will now halt, battary charge critical: $charge"
   halt -p
 elif [ "$charge" -le "$lowlevel" ]; then
   notify "Battery" "charge to low: $charge"
