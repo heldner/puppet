@@ -8,6 +8,8 @@ class utils {
     'isync',
     'irssi',
     'irssi-plugin-xmpp',
+    'fonts-font-awesome',
+    'unclutter'
   ]
 
   package { $utils_pkgs:
