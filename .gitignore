@@ -5,3 +5,4 @@ modules/stdlib
 modules/openntpd
 modules/puppi
 modules/concat
+modules/firewall

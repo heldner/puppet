@@ -3,6 +3,7 @@
 
 forge "https://forgeapi.puppetlabs.com"
 
+mod 'puppetlabs-firewall'
 mod 'puppetlabs-stdlib'
 mod 'puppetlabs-apt'
 mod 'puppetlabs-concat'
