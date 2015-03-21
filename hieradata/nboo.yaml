@@ -1,7 +1,11 @@
 ---
 classes:
   - nboo
+  - xorg::background
 
-mpd::music_dir: '/home/Music'
+xorg::background::user: 'dayton'
+xorg::background::pic_path: '/home/pictures'
+
+mpd::music_dir: '/home/music'
 mpd::use_pulse: false
 xorg::xorg_conf: "puppet:///modules/nboo/xorg.conf"
