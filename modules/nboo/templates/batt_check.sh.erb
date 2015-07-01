@@ -22,7 +22,7 @@ notify() {
 
 if [ "$charge" -le "$critical" ]; then
   echo "Will now halt, battary charge critical: $charge"
-  halt -p
+  /etc/init.d/halt stop
 elif [ "$charge" -le "$lowlevel" ]; then
   notify "Battery" "charge to low: $charge"
 fi
