@@ -11,7 +11,7 @@ class nboo::battery (
   file { 'batt_check':
     ensure  => $ensure,
     path    => $full_path,
-    mode    => 0755,
+    mode    => '0755',
     content => template("${module_name}/batt_check.sh.erb")
   } ->
 

@@ -5,7 +5,7 @@ class apulse::askype (
   file { 'askype':
     ensure => $ensure,
     path   => '/usr/local/bin/askype',
-    mode   => 0755,
+    mode   => '0755',
     source => "puppet:///modules/${module_name}/askype",
   }
 

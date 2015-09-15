@@ -1,2 +1,9 @@
 ---
+classes:
+  - autofs
+  - utils::firewall
+
 mpd::music_dir: '/home/skor/Music'
+
+autofs::sources:
+  '/mnt': '/etc/auto.mnt'

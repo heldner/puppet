@@ -42,7 +42,7 @@ apt::sources:
     release:  '%{::lsbdistcodename}'
     repos:    'main non-free'
   docker:
-    location: 'http://get.docker.io/ubuntu'
+    location: 'https://get.docker.io/ubuntu'
     release:  'docker'
     repos:    'main'
     include_src: false
