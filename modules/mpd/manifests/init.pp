@@ -21,7 +21,7 @@ class mpd (
     path    => '/etc/mpd.conf',
     owner   => 'mpd',
     group   => 'audio',
-    mode    => 0640,
+    mode    => '0640',
     content => template("${module_name}/mpd.conf.erb")
   } ->
 

@@ -18,7 +18,7 @@ class xorg (
     file { 'xorg.conf':
       ensure  => 'present',
       path    => '/etc/X11/xorg.conf',
-      mode    => 0644,
+      mode    => '0644',
       source  => $xorg_conf,
       require => Package[$x_pkgs]
     }

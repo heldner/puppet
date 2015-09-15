@@ -11,7 +11,7 @@ class utils::firewall {
   }
 
   firewallchain { 'FORWARD:filter:IPv4':
-    purge => true,
+    purge  => true,
     ignore => [
       '-o docker0',
       '-i docker0'
@@ -19,7 +19,7 @@ class utils::firewall {
   }
 
   firewallchain { 'POSTROUTING:nat:IPv4':
-    purge => true,
+    purge  => true,
     ignore => [
       'docker0',
     ],
@@ -27,8 +27,8 @@ class utils::firewall {
 
   # Default firewall rules
   firewall { '000 accept icmp pings':
-    proto      => 'icmp',
-    action     => 'accept',
+    proto  => 'icmp',
+    action => 'accept',
   }
 
   firewall { '001 accept all to lo interface':
@@ -57,9 +57,9 @@ class utils::firewall {
   }
 
   firewall { '020 jabber send files':
-    proto => 'tcp',
-    port  => '28011',
-    state => 'NEW',
+    proto  => 'tcp',
+    port   => '28011',
+    state  => 'NEW',
     action => 'accept',
   }
 

@@ -6,7 +6,7 @@ class apulse (
   validate_re($ensure, ['absent', 'present',])
 
   $package = "${module_name}_${version}_i386.deb"
-  $pkg_path = "/var/cache/apt/archives/$package"
+  $pkg_path = "/var/cache/apt/archives/${package}"
 
   include apulse::askype
 
