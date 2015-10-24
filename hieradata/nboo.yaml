@@ -9,3 +9,8 @@ xorg::background::pic_path: '/home/pictures'
 mpd::music_dir: '/home/music'
 mpd::use_pulse: false
 xorg::xorg_conf: "puppet:///modules/nboo/xorg.conf"
+
+udev::rules:
+  backlight:
+    content: 'puppet:///modules/udev/50-backlight.rules'
+    priority: 50
