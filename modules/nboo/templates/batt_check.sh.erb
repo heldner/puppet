@@ -16,7 +16,7 @@ notify() {
   users=`who | awk '!x[$1]++ {print $1}'`
 
   for u in ${users}; do
-    sudo -u ${u} notify-send "$title" "$body" 2>/dev/null
+    sudo -u ${u} notify-send "$title" "$body" 2>-
   done
 }
 
@@ -24,5 +24,5 @@ if [ "$charge" -le "$critical" ]; then
   echo "Will now halt, battary charge critical: $charge"
   /etc/init.d/halt stop
 elif [ "$charge" -le "$lowlevel" ]; then
-  notify "Battery" "charge to low: $charge"
+  notify "<b>Battery</b>" "charge to low: $charge"
 fi

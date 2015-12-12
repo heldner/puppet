@@ -1,14 +1,11 @@
-class udev (
-  $rules = undef,
-  ) {
+class udev {
 
   package { 'udev':
     ensure => 'installed'
   }
 
-  if $rules!= undef {
-    validate_hash($rules)
-    create_resources('udev::rules', $rules)
-  }
+  $rules = hiera_hash('udev::rules')
+  validate_hash($rules)
+  create_resources('udev::rules', $rules)
 
 }
