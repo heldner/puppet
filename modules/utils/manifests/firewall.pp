@@ -25,6 +25,23 @@ class utils::firewall {
     ],
   }
 
+  firewall { '000 snat for LibreJupiter':
+    chain       => 'POSTROUTING',
+    jump        => 'MASQUERADE',
+    proto       => 'all',
+    outiface    => 'wlan0',
+    destination => '192.168.12.0/24',
+    table       => 'nat',
+  }
+  firewall { '001 snat for LibreJupiter':
+    chain    => 'POSTROUTING',
+    jump     => 'MASQUERADE',
+    proto    => 'all',
+    outiface => 'eth0',
+    source   => '192.168.12.0/24',
+    table    => 'nat',
+  }
+
   # Default firewall rules
   firewall { '000 accept icmp pings':
     proto  => 'icmp',
@@ -49,9 +66,54 @@ class utils::firewall {
     action => 'accept',
   }
 
+  firewall { '012 forward':
+    proto   => 'all',
+    source  => '192.168.12.1/24',
+    iniface => 'wlan0',
+    action  => 'accept',
+    chain   => 'FORWARD',
+  }
+
+  firewall { '011 forward':
+    proto       => 'all',
+    destination => '192.168.12.1/24',
+    iniface     => 'eth0',
+    action      => 'accept',
+    chain       => 'FORWARD',
+  }
+
+
   firewall { '010 allow ssh':
     proto  => 'tcp',
     port   => 'ssh',
+    state  => 'NEW',
+    action => 'accept',
+  }
+
+  firewall { '011 allow dns':
+    proto  => 'tcp',
+    port   => '53',
+    state  => 'NEW',
+    action => 'accept',
+  }
+
+  firewall { '012 allow dns':
+    proto  => 'udp',
+    port   => '53',
+    state  => 'NEW',
+    action => 'accept',
+  }
+
+  firewall { '011 allow dhcp':
+    proto  => 'tcp',
+    port   => '67',
+    state  => 'NEW',
+    action => 'accept',
+  }
+
+  firewall { '012 allow dhcp':
+    proto  => 'udp',
+    port   => '67',
     state  => 'NEW',
     action => 'accept',
   }

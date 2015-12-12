@@ -1,8 +1,10 @@
 class utils {
 
   $utils_pkgs = [
+    'autossh',
     'zathura',
     'gajim',
+    'gifsicle',
     'feh',
     'mutt',
     'isync',
